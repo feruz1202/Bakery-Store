@@ -159,7 +159,7 @@ export default function App() {
               <p className="text-gray-500 text-[13px] leading-snug">Zingy curd, buttery shortcrust, Italian meringue</p>
 
               <div className="flex flex-row justify-between items-center mt-2">
-                <span className="font-bold text-[#1a1a1a] text-[16px]">£8.99</span>
+                <span className="font-bold text-[#1a1a1a] text-[16px]">£9.99</span>
                 <button className="bg-[#3b2314] text-white text-[13px] font-semibold px-4 py-2 rounded-xl hover:bg-[#5a3520]">
                   + Add
                 </button>
