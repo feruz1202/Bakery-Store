@@ -1,4 +1,5 @@
 import { FaCartShopping } from "react-icons/fa6";
+import { HiArrowNarrowRight } from "react-icons/hi";
 import { GiWheat } from "react-icons/gi";
 import { AiFillFire } from "react-icons/ai";
 import { TbTruckDelivery } from "react-icons/tb";
@@ -41,7 +42,7 @@ export default function App() {
         {/* HEADING */}
         <div className="flex flex-col leading-[1] lg:leading-[1.5] px-10 lg:pl-30">
           <span className="mt-10 font-[DM_Sans] font-serif text-[#c8973a]">WHY CHOOSE US</span>
-          <span className=" mt-3 lg:mt-0 font-[Playfair_Display] text-[40px]">THE Farine Promise</span>
+          <span className=" mt-3 lg:mt-0 font-[Playfair_Display] text-[40px]">The Farine Promise</span>
           <span className="mt-3 lg:mt-0 font-[DM_Sans] text-[#7a6855] text-[16px]">Quality you can taste in every single bite.</span>
         </div>
 
@@ -79,7 +80,7 @@ export default function App() {
         {/* BESTSELLER CARDS */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 px-10 lg:pl-30 max-w-[1650px] mt-8 gap-5 flex-wrap ">
           {/* FIRST CARD */}
-          <div className="flex flex-col w-[330px] min-h-[300px] rounded-2xl border border-gray-200 overflow-hidden bg-white">
+          <div className="flex flex-col w-[330px] rounded-2xl border border-gray-200 overflow-hidden bg-white">
             {/* IMAGE AREA */}
             <div className="relative h-[180px]">
               {/* BADGE - top left */}
@@ -167,7 +168,7 @@ export default function App() {
           </div>
 
           {/* FOURTH CARD */}
-          <div className="flex flex-col w-[330px] rounded-2xl border border-gray-200 overflow-hidden bg-white mb-5">
+          <div className="flex flex-col w-[330px] rounded-2xl border border-gray-200 overflow-hidden bg-white">
             <div className="relative h-[180px]">
               {/* BADGE - top left */}
               <span className="absolute top-3 left-3 bg-[#F5C842] text-[#3b2314] text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wide z-10">
@@ -194,6 +195,9 @@ export default function App() {
             </div>
           </div>
         </div>
+        <div className="flex items-center justify-center mt-10">
+            <button className="flex mb-3 border border-[#3b2314] p-3 rounded-[16px] w-[190px] hover:bg-[#3b2314] hover:text-white gap-3 cursor-pointer text-[#3b2314] font-[DM_Sans]">View All Products<HiArrowNarrowRight size="1.5rem" /></button>
+          </div>
       </div>
     </>
   );
