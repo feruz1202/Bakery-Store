@@ -29,7 +29,7 @@ export default function App() {
           <div className="w-[50%] h-[450px] px-10">
             <img
               className="hidden md:flex w-full h-full object-cover rounded-2xl"
-              src="images/yeh-xintong-go3DT3PpIw4-unsplash.jpg"
+              src="/yeh-xintong-go3DT3PpIw4-unsplash.jpg"
               alt="MAIN PAGE PHOTO"
             />
           </div>
@@ -89,7 +89,7 @@ export default function App() {
               </span>
               {/* FULL IMAGE */}
               <img
-                src="images/sourdough.jpg"
+                src="/sourdough.jpg"
                 alt="Classic Sourdough"
                 className="w-full h-full object-cover"
               />
@@ -120,7 +120,7 @@ export default function App() {
               </span>
               {/* FULL IMAGE */}
               <img
-                src="images/crossaint.jpg"
+                src="/crossaint.jpg"
                 alt="Butter Crossaint"
                 className="w-full h-full object-cover"
               />
@@ -148,7 +148,7 @@ export default function App() {
               </span>
               {/* FULL IMAGE */}
               <img
-                src="images/cupcake.jpg"
+                src="/cupcake.jpg"
                 alt="Butter Crossaint"
                 className="w-full h-full object-cover"
               />
@@ -176,7 +176,7 @@ export default function App() {
               </span>
               {/* FULL IMAGE */}
               <img
-                src="images/crossaint.jpg"
+                src="/crossaint.jpg"
                 alt="Butter Crossaint"
                 className="w-full h-full object-cover"
               />
