@@ -14,7 +14,7 @@ export default function App() {
         <div className="flex flex-row gap-20 w-full items-center">
           {/* LEFT COLUMN */}
           <div className="flex flex-row w-[50%] lg:pl-20">
-            <div className="flex flex-col px-10 mt-7">
+            <div className="flex flex-col px-15 lg:px-10 mt-7">
               <span className="bg-[#e8b85a] text-[12px] font-[DM_Sans] p-2 rounded-[20px] w-fit">BAKED FRESHLY DAILY</span>
               <h1 className="text-[56px] max-w-md leading-[1.2] mt-4 font-[Playfair_Display]">Artisan Bread & <strong className="text-[#c8973a]">Pastries</strong> Crafted with Love</h1>
               <p className="text-[#7a6855] text-[17px] max-w-md sm:max-w-lg mt-4">From our stone-hearth ovens to your table — every loaf, croissant, and cake is made with heritage grains and time-honoured techniques since 1987.</p>
@@ -196,8 +196,66 @@ export default function App() {
           </div>
         </div>
         <div className="flex items-center justify-center mt-10">
-            <button className="flex mb-3 border border-[#3b2314] p-3 rounded-[16px] w-[190px] hover:bg-[#3b2314] hover:text-white gap-3 cursor-pointer text-[#3b2314] font-[DM_Sans]">View All Products<HiArrowNarrowRight size="1.5rem" /></button>
+          <button className="flex mb-7 border border-[#3b2314] p-3 rounded-[16px] w-fit hover:bg-[#3b2314] hover:text-white gap-3 cursor-pointer text-[#3b2314] font-[DM_Sans]">View All Products<HiArrowNarrowRight size="1.5rem" /></button>
+        </div>
+      </div>
+
+      {/* WHAT OUR CUSTOMERS SAY */}
+      <div className="bg-[#3b2314] w-full h-fit py-10">
+        <span className="font-[Playfair_Display] text-[33px] text-[#e8b85a] flex items-center justify-center px-10">What Our Customers Say</span>
+        {/* FEEDBACK CARDS */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 px-10 lg:pl-30 flex items-center justify-center gap-7 max-w-[1650px] mt-10">
+          {/* CARD 1 */}
+          <div className="flex flex-col border border-gray-500 gap-5 p-5 bg-[#ffffff12] rounded-[20px]">
+            <span className="text-[#c8973a] text-[18px] tracking-wide font-bold">★★★★★</span>
+            <span className="font-[DM_Sans] text-[15px] text-[#ffffffd9] italic">"The sourdough is absolutely life-changing. I've ordered every week for the past two years!"</span>
+            <span className="text-[#c8973a] text-[14px] font-[DM_Sans] font-bold">Alex Spaghetti</span>
           </div>
+
+          {/* CARD 2 */}
+          <div className="flex flex-col border border-gray-500 gap-5 p-5 bg-[#ffffff12] rounded-[20px]">
+            <span className="text-[#c8973a] text-[18px] tracking-wide font-bold">★★★★★</span>
+            <span className="font-[DM_Sans] text-[15px] text-[#ffffffd9] italic">"The sourdough is absolutely life-changing. I've ordered every week for the past two years!"</span>
+            <span className="text-[#c8973a] text-[14px] font-[DM_Sans] font-bold">Alex Spaghetti</span>
+          </div>
+
+          {/* CARD 3 */}
+          <div className="flex flex-col border border-gray-500 gap-5 p-5 bg-[#ffffff12] rounded-[20px]">
+            <span className="text-[#c8973a] text-[18px] tracking-wide font-bold">★★★★★</span>
+            <span className="font-[DM_Sans] text-[15px] text-[#ffffffd9] italic">"The sourdough is absolutely life-changing. I've ordered every week for the past two years!"</span>
+            <span className="text-[#c8973a] text-[14px] font-[DM_Sans] font-bold">Alex Spaghetti</span>
+          </div>
+        </div>
+      </div>
+
+      {/* EMAIL SUBSCRIPTION */}
+      <div className="bg-[#f2ede3] w-full h-fit py-10">
+        <div className="flex flex-col items-center justify-center p-3">
+          <span className="font-[Playfair_Display] text-[30px] text-[#3b2314]">Get Fresh Deals Weekly</span>
+          <p className="text-[#7a6855] font-[DM_Sans] text-[16px] max-w-md text-center mt-3">Subscribe for early access to seasonal specials, new items, and exclusive subscriber discounts.</p>
+          <div className="flex flex-row gap-5 mt-5">
+            <input type="text" placeholder="your@email.com" className="border border-gray-400 rounded-[10px] p-3 w-full focus:outline-[#FF9D23] bg-white shadow-md" />
+            <button className="font-bold bg-[#3b2314] text-white p-3 text-[15px] rounded-[10px] w-[120px] hover:bg-[#995F2F] shadow-md">Subscribe</button>
+          </div>
+        </div>
+      </div>
+
+      {/* FOOTER */}
+      <div className="bg-[#3b2314] w-full h-fit py-10">
+        <div className="flex flex-col items-center justify-center px-10">
+          <span className="text-[#e8b85a] text-[25px] font-[Playfair_Display]">Farine & Co</span>
+          <p className="text-[#ffffff99] text-[16px] font-[DM_Sans] mt-2">12 Baker Street, London W1U 3BQ</p>
+        </div>
+
+        <div className="flex flex-row gap-7 px-10 text-center items-center justify-center mt-2">
+          <a href=""><span className="text-[#ffffff99] text-[14px] font-[DM_Sans] hover:text-[#c8973a] duration-100 cursor-pointer">Shop</span></a>
+          <a href=""><span className="text-[#ffffff99] text-[14px] font-[DM_Sans] hover:text-[#c8973a] duration-100 cursor-pointer">About</span></a>
+          <a href=""><span className="text-[#ffffff99] text-[14px] font-[DM_Sans] hover:text-[#c8973a] duration-100 cursor-pointer">Privacy Policy</span></a>
+          <a href=""><span className="text-[#ffffff99] text-[14px] font-[DM_Sans] hover:text-[#c8973a] duration-100 cursor-pointer">Terms</span></a>
+        </div>
+
+        <hr className="max-w-[1650px] border-top border-[1px] mx-30 mt-5 border-[#ffffff1a]" />
+        <p className="flex itemsc-center justify-center text-[#ffffff99] text-[14px] font-[DM_Sans] mt-3">&copy; 2026 Farine & Co. Bakery. All rights reserved.</p>
       </div>
     </>
   );
