@@ -11,7 +11,7 @@ export default function Navbar({ setPage, cartCount }) {
                     <span onClick={() => setPage("about")} className="font-[DM_Sans] relative cursor-pointer after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[3px] after:bg-[#c8973a] after:transition-all after:duration-300 hover:after:w-full">ABOUT</span>
                     <span onClick={() => setPage("login")} className="font-[DM_Sans] relative cursor-pointer after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[3px] after:bg-[#c8973a] after:transition-all after:duration-300 hover:after:w-full">LOGIN</span>
                 </div>
-                <button className="flex w-26 h-10 md:h-13 bg-[#3b2314] p-3 gap-2 text-[22px] rounded-[10px] text-white items-center cursor-pointer relative">
+                <button  onClick={() => setPage("cart")} className="flex w-26 h-10 md:h-13 bg-[#3b2314] p-3 gap-2 text-[22px] rounded-[10px] text-white items-center cursor-pointer relative">
                     <FaCartShopping size="1.5rem" />
                     <span className="text-[16px]">Cart</span>
 

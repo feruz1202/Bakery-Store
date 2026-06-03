@@ -6,6 +6,9 @@ import { AiFillFire } from "react-icons/ai";
 import { TbTruckDelivery } from "react-icons/tb";
 import Navbar from "./components/navbar.jsx";
 import Shop from "./pages/shop.jsx";
+import Cart from "./pages/cart.jsx"
+import { products } from "./data/productdata"
+import ProductCard from "./components/productcard"
 
 export default function App() {
   const [page, setPage] = useState("home")
@@ -37,6 +40,7 @@ export default function App() {
       <Navbar setPage={setPage} cartCount={cart.reduce((sum, item) => sum + item.quantity, 0)} />
 
       {page === "shop" && <Shop addToCart={addToCart} removeFromCart={removeFromCart} cart={cart} />}
+      {page === "cart" && <Cart cart={cart} setCart={setCart} setPage={setPage} />}
 
       {page === "home" && (
         <>
@@ -109,120 +113,15 @@ export default function App() {
 
             {/* BESTSELLER CARDS */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 px-10 lg:pl-30 max-w-[1650px] mt-8 gap-5 flex-wrap ">
-              {/* FIRST CARD */}
-              <div className="flex flex-col w-[330px] rounded-2xl border border-gray-200 overflow-hidden bg-white">
-                {/* IMAGE AREA */}
-                <div className="relative h-[180px]">
-                  {/* BADGE - top left */}
-                  <span className="absolute top-3 left-3 bg-[#F5C842] text-[#3b2314] text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wide z-10">
-                    Bestseller
-                  </span>
-                  {/* FULL IMAGE */}
-                  <img
-                    src="/sourdough.jpg"
-                    alt="Classic Sourdough"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                {/* CONTENT AREA */}
-                <div className="flex flex-col p-4 gap-2">
-                  <h3 className="font-bold text-[#1a1a1a] text-[16px]">
-                    Classic Sourdough
-                  </h3>
-                  <p className="text-gray-500 text-[13px] leading-snug">
-                    Slow-fermented 48h, heritage wheat, perfect crust
-                  </p>
-                  <div className="flex flex-row items-center justify-between mt-2">
-                    <span className="font-bold text-[#1a1a1a] text-[16px]">£6.50</span>
-                    <button className="bg-[#3b2314] text-white text-[13px] font-semibold px-4 py-2 rounded-xl hover:bg-[#5a3520]">
-                      + Add
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* SECOND CARD */}
-              <div className="flex flex-col w-[330px] rounded-2xl border border-gray-200 overflow-hidden bg-white">
-                <div className="relative h-[180px]">
-                  {/* BADGE - top left */}
-                  <span className="absolute top-3 left-3 bg-[#F5C842] text-[#3b2314] text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wide z-10">
-                    New
-                  </span>
-                  {/* FULL IMAGE */}
-                  <img
-                    src="/crossaint.jpg"
-                    alt="Butter Crossaint"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                <div className="flex flex-col p-4 gap-2">
-                  <span className="font-bold text-[#1a1a1a] text-[16px]">Butter Crossaint</span>
-                  <p className="text-gray-500 text-[13px] leading-snug">French laminated dough, pure Irish butter, 72 layers</p>
-
-                  <div className="flex flex-row justify-between items-center mt-2">
-                    <span className="font-bold text-[#1a1a1a] text-[16px]">£12</span>
-                    <button className="bg-[#3b2314] text-white text-[13px] font-semibold px-4 py-2 rounded-xl hover:bg-[#5a3520]">
-                      + Add
-                    </button>
-                  </div>
-                </div>
-              </div>
-              {/* THIRD CARD */}
-              <div className="flex flex-col w-[330px] rounded-2xl border border-gray-200 overflow-hidden bg-white">
-                <div className="relative h-[180px]">
-                  {/* BADGE - top left */}
-                  <span className="absolute top-3 left-3 bg-[#F5C842] text-[#3b2314] text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wide z-10">
-                    Bestseller
-                  </span>
-                  {/* FULL IMAGE */}
-                  <img
-                    src="/cupcake.jpg"
-                    alt="Butter Crossaint"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                <div className="flex flex-col p-4 gap-2">
-                  <span className="font-bold text-[#1a1a1a] text-[16px]">Cupcake</span>
-                  <p className="text-gray-500 text-[13px] leading-snug">Zingy curd, buttery shortcrust, Italian meringue</p>
-
-                  <div className="flex flex-row justify-between items-center mt-2">
-                    <span className="font-bold text-[#1a1a1a] text-[16px]">£9.99</span>
-                    <button className="bg-[#3b2314] text-white text-[13px] font-semibold px-4 py-2 rounded-xl hover:bg-[#5a3520]">
-                      + Add
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* FOURTH CARD */}
-              <div className="flex flex-col w-[330px] rounded-2xl border border-gray-200 overflow-hidden bg-white">
-                <div className="relative h-[180px]">
-                  {/* BADGE - top left */}
-                  <span className="absolute top-3 left-3 bg-[#F5C842] text-[#3b2314] text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wide z-10">
-                    New
-                  </span>
-                  {/* FULL IMAGE */}
-                  <img
-                    src="/crossaint.jpg"
-                    alt="Butter Crossaint"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                <div className="flex flex-col p-4 gap-2">
-                  <span className="font-bold text-[#1a1a1a] text-[16px]">Butter Crossaint</span>
-                  <p className="text-gray-500 text-[13px] leading-snug">French laminated dough, pure Irish butter, 72 layers</p>
-
-                  <div className="flex flex-row justify-between items-center mt-2">
-                    <span className="font-bold text-[#1a1a1a] text-[16px]">£12</span>
-                    <button className="bg-[#3b2314] text-white text-[13px] font-semibold px-4 py-2 rounded-xl hover:bg-[#5a3520]">
-                      + Add
-                    </button>
-                  </div>
-                </div>
-              </div>
+              {products.slice(0, 4).map(product => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  addToCart={addToCart}
+                  removeFromCart={removeFromCart}
+                  cart={cart}
+                />
+              ))}
             </div>
             <div className="flex items-center justify-center mt-10">
               <button onClick={() => setPage("shop")} className="flex mb-7 border border-[#3b2314] p-3 rounded-[16px] w-fit hover:bg-[#3b2314] hover:text-white gap-3 cursor-pointer text-[#3b2314] font-[DM_Sans]">View All Products<HiArrowNarrowRight size="1.5rem" /></button>
