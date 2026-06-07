@@ -9,10 +9,13 @@ import Shop from "./pages/shop.jsx";
 import Cart from "./pages/cart.jsx"
 import { products } from "./data/productdata"
 import ProductCard from "./components/productcard"
+import About from "./pages/about.jsx"
+import Login from "./pages/login.jsx"
 
 export default function App() {
   const [page, setPage] = useState("home")
   const [cart, setCart] = useState([])
+  const [user, setUser] = useState(null)
   const addToCart = (product) => {
     setCart(prevCart => {
       // check if product already exists in cart
@@ -37,10 +40,17 @@ export default function App() {
   }
   return (
     <>
-      <Navbar setPage={setPage} cartCount={cart.reduce((sum, item) => sum + item.quantity, 0)} />
+      <Navbar
+        setPage={setPage}
+        cartCount={cart.reduce((sum, item) => sum + item.quantity, 0)}
+        user={user}
+        setUser={setUser}
+      />
 
       {page === "shop" && <Shop addToCart={addToCart} removeFromCart={removeFromCart} cart={cart} />}
       {page === "cart" && <Cart cart={cart} setCart={setCart} setPage={setPage} />}
+      {page === "about" && <About setPage={setPage} />}
+      {page === "login" && <Login setPage={setPage} setUser={setUser} />}
 
       {page === "home" && (
         <>
@@ -55,7 +65,7 @@ export default function App() {
                   <p className="text-[#7a6855] text-[17px] max-w-md sm:max-w-lg mt-4">From our stone-hearth ovens to your table — every loaf, croissant, and cake is made with heritage grains and time-honoured techniques since 1987.</p>
                   <div className="flex flex-row gap-5 mt-5 mb-5">
                     <button onClick={() => setPage("shop")} className="mb-3 font-bold bg-[#3b2314] text-white p-3 text-[15px] rounded-[16px] w-[120px] hover:bg-[#995F2F]">Shop Now</button>
-                    <button className="mb-3 font-bold border border-[#3b2314] p-3 rounded-[16px] w-[120px] hover:bg-[#3b2314] hover:text-white">Our Story</button>
+                    <button onClick={() => setPage("about")} className="mb-3 font-bold border border-[#3b2314] p-3 rounded-[16px] w-[120px] hover:bg-[#3b2314] hover:text-white">Our Story</button>
                   </div>
                 </div>
               </div>
@@ -156,12 +166,12 @@ export default function App() {
           </div>
 
           {/* EMAIL SUBSCRIPTION */}
-          <div className="bg-[#f2ede3] w-full h-fit py-10">
-            <div className="flex flex-col items-center justify-center p-3">
+          <div className="bg-[#f2ede3] w-full h-fit py-10 px-5">
+            <div className="flex flex-col items-center justify-center p-3 ">
               <span className="font-[Playfair_Display] text-[30px] text-[#3b2314] text-bold">Get Fresh Deals Weekly</span>
               <p className="text-[#7a6855] font-[DM_Sans] text-[16px] max-w-md text-center mt-3">Subscribe for early access to seasonal specials, new items, and exclusive subscriber discounts.</p>
               <div className="flex flex-row gap-5 mt-5">
-                <input type="text" placeholder="your@email.com" className="border border-gray-400 rounded-[10px] p-3 w-full focus:outline-[#FF9D23] bg-white shadow-md" />
+                <input type="text" placeholder="your@email.com" className="border border-gray-300 rounded-[10px] p-3 w-full focus:outline-[#FF9D23] bg-white shadow-md" />
                 <button className="font-bold bg-[#3b2314] text-white p-3 text-[15px] rounded-[10px] w-[120px] hover:bg-[#995F2F] shadow-md">Subscribe</button>
               </div>
             </div>
