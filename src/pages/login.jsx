@@ -113,9 +113,6 @@ export default function Login({ setPage, setUser }) {
             <button className="w-full border border-gray-200 rounded-xl py-3 text-[14px] font-semibold text-[#3b2314] hover:border-[#c8973a] transition">
               🌐 Continue with Google
             </button>
-            <button className="w-full border border-gray-200 rounded-xl py-3 text-[14px] font-semibold text-[#3b2314] hover:border-[#c8973a] transition">
-              🍎 Continue with Apple
-            </button>
           </div>
         )}
 

@@ -53,9 +53,9 @@ export default function App() {
       {page === "login" && <Login setPage={setPage} setUser={setUser} />}
 
       {page === "home" && (
-        <>
+        <> 
           {/* HERO SECTION */}
-          <div className="w-full h-fit lg:h-[560px] bg-[#f2ede3] flex items-center">
+          <div className="w-full h-fit lg:h-[560px] bg-[#f2ede3] flex items-center overflow-x-hidden">
             <div className="flex flex-row gap-20 w-full items-center">
               {/* LEFT COLUMN */}
               <div className="flex flex-row w-[50%] lg:pl-50">

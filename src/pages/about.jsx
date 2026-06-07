@@ -157,7 +157,7 @@ export default function About({ setPage }) {
             {/* FOOTER */}
             <div className="bg-[#3b2314] h-fit">
                 <div className="flex flex-col items-center justify-center gap-2 px-5">
-                    <h2 className="text-[#e8b85a] text-[30px] font-[Playfair_Dsiplay mt-4">Come Visit Us</h2>
+                    <h2 className="text-[#e8b85a] text-[30px] font-[Playfair_Dsiplay] mt-4">Come Visit Us</h2>
                     <p className="text-[#ffffffb3] text-[16px]">12 Baker Street, London W1U 3BQ</p>
                     <p className="text-[#ffffffb3] text-[16px] text-center">Mon–Fri: 6AM–7PM · Sat: 6AM–8PM · Sun: 7AM–5PM</p>
                     <button onClick={() => setPage("shop")} className="bg-[#c8973a] text-[#3b2314] font-[DM_Sans] text-[16px] font-bold rounded-[5px] p-3 mt-2 cursor-pointer">Order Online</button>
