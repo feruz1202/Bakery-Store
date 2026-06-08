@@ -38,11 +38,13 @@ export default function Navbar({ setPage, cartCount, user, setUser }) {
           {/* ACCOUNT — only when logged in */}
           {user && (
             <div className="relative">
+              {/* ACCOUNT BUTTON */}
               <button
                 onClick={() => setShowDropdown(!showDropdown)}
-                className="flex items-center gap-2 bg-[#f2ede3] border border-gray-200 rounded-full px-4 py-2 text-[14px] font-semibold text-[#3b2314] cursor-pointer hover:border-[#c8973a] transition"
+                className="flex items-center gap-1 bg-[#f2ede3] border border-gray-200 rounded-full px-2 py-1 md:px-4 md:py-2 text-[12px] md:text-[14px] font-semibold text-[#3b2314] cursor-pointer hover:border-[#c8973a] transition"
               >
-                👤 {user.name}
+                <span className="text-[14px] md:text-[16px]">👤</span>
+                <span className="hidden sm:block">{user.name}</span>
               </button>
               {showDropdown && (
                 <div className="absolute right-0 top-12 bg-white border border-gray-200 rounded-xl shadow-lg p-2 w-[180px] z-50">
