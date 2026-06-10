@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { FaCartShopping } from "react-icons/fa6";
 import { HiArrowNarrowRight } from "react-icons/hi";
 import { GiWheat } from "react-icons/gi";
@@ -13,6 +13,7 @@ import About from "./pages/about.jsx"
 import Login from "./pages/login.jsx"
 
 export default function App() {
+  
   const [page, setPage] = useState("home")
   const [cart, setCart] = useState([])
   const [user, setUser] = useState(null)
@@ -35,25 +36,30 @@ export default function App() {
     })
   }
 
+  const navigate = (page) => {
+    setPage(page)
+    window.scrollTo(0, 0)
+  }
+
   const removeFromCart = (productId) => {
     setCart(prevCart => prevCart.filter(item => item.id !== productId))
   }
   return (
     <>
       <Navbar
-        setPage={setPage}
+        setPage={navigate}        // ← change setPage to navigate
         cartCount={cart.reduce((sum, item) => sum + item.quantity, 0)}
         user={user}
         setUser={setUser}
       />
 
       {page === "shop" && <Shop addToCart={addToCart} removeFromCart={removeFromCart} cart={cart} />}
-      {page === "cart" && <Cart cart={cart} setCart={setCart} setPage={setPage} />}
-      {page === "about" && <About setPage={setPage} />}
-      {page === "login" && <Login setPage={setPage} setUser={setUser} />}
+      {page === "cart" && <Cart cart={cart} setCart={setCart} setPage={navigate} />}
+      {page === "about" && <About setPage={navigate} />}
+      {page === "login" && <Login setPage={navigate} setUser={setUser} />}
 
       {page === "home" && (
-        <> 
+        <>
           {/* HERO SECTION */}
           <div className="w-full h-fit lg:h-[560px] bg-[#f2ede3] flex items-center overflow-x-hidden">
             <div className="flex flex-row gap-20 w-full items-center">

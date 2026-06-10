@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { products } from "../data/productdata"
 import ProductCard from "../components/productcard"
 
@@ -30,6 +30,19 @@ export default function Shop({ addToCart, removeFromCart, cart }) {
     setAvailability({ inStock: true, preOrder: false })
     setCategoryFilters({ breads: true, pastries: true, cakes: true, cookies: true, drinks: true })
   }
+
+
+
+  const [currentPage, setCurrentPage] = useState(1)
+  const productsPerPage = 10
+  const totalPages = Math.ceil(filtered.length / productsPerPage)
+  const startIndex = (currentPage - 1) * productsPerPage
+  const endIndex = startIndex + productsPerPage
+  const currentProducts = filtered.slice(startIndex, endIndex)
+
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [activeCategory, sortBy, maxPrice])
 
   return (
     <div className="w-full bg-[#f2ede3] min-h-screen">
@@ -188,7 +201,7 @@ export default function Shop({ addToCart, removeFromCart, cart }) {
 
           {/* PRODUCTS GRID */}
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 justify-items-center">
-            {filtered.map(product => (
+            {currentProducts.map(product => (
               <ProductCard
                 key={product.id}
                 product={product}
@@ -198,7 +211,58 @@ export default function Shop({ addToCart, removeFromCart, cart }) {
               />
             ))}
           </div>
+          {/* PAGINATION */}
+          {totalPages > 1 && (
+            <div className="flex items-center justify-center gap-2 mt-8 flex-wrap">
 
+              {/* PREV BUTTON */}
+              <button
+                onClick={() => setCurrentPage(prev => prev - 1)}
+                disabled={currentPage === 1}
+                className={`px-4 py-2 rounded-xl border text-[14px] font-semibold transition
+        ${currentPage === 1
+                    ? "border-gray-200 text-gray-300 cursor-not-allowed"
+                    : "border-[#3b2314] text-[#3b2314] hover:bg-[#3b2314] hover:text-white"
+                  }`}
+              >
+                ← Prev
+              </button>
+
+              {/* PAGE NUMBERS */}
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNum => (
+                <button
+                  key={pageNum}
+                  onClick={() => setCurrentPage(pageNum)}
+                  className={`w-10 h-10 rounded-xl border text-[14px] font-semibold transition
+          ${currentPage === pageNum
+                      ? "bg-[#3b2314] text-white border-[#3b2314]"
+                      : "border-gray-200 text-[#3b2314] hover:border-[#3b2314]"
+                    }`}
+                >
+                  {pageNum}
+                </button>
+              ))}
+
+              {/* NEXT BUTTON */}
+              <button
+                onClick={() => setCurrentPage(prev => prev + 1)}
+                disabled={currentPage === totalPages}
+                className={`px-4 py-2 rounded-xl border text-[14px] font-semibold transition
+        ${currentPage === totalPages
+                    ? "border-gray-200 text-gray-300 cursor-not-allowed"
+                    : "border-[#3b2314] text-[#3b2314] hover:bg-[#3b2314] hover:text-white"
+                  }`}
+              >
+                Next →
+              </button>
+
+            </div>
+          )}
+
+          {/* PAGE INFO */}
+          <p className="text-center text-[13px] text-gray-400 mt-3">
+            Page {currentPage} of {totalPages} — showing {currentProducts.length} of {filtered.length} products
+          </p>
         </div>
       </div>
     </div>

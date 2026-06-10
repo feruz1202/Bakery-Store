@@ -6,7 +6,7 @@ export const products = [
     price: 6.50,
     category: "bread",
     badge: "Bestseller",
-    image: "/sourdough.jpg"
+    image: "./sourdough.jpg"
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ export const products = [
     price: 3.20,
     category: "pastry",
     badge: "Popular",
-    image: "/crossaint.jpg"
+    image: "./crossaint.jpg"
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ export const products = [
     price: 4.80,
     category: "cake",
     badge: "Seasonal",
-    image: "/cupcake.jpg"
+    image: "./cupcake.jpg"
   },
   // add more products same structure...
   {
@@ -34,7 +34,7 @@ export const products = [
     price: 4.80,
     category: "cake",
     badge: "Seasonal",
-    image: "/cupcake.jpg"
+    image: "./cupcake.jpg"
   },
   {
     id: 5,
@@ -43,7 +43,7 @@ export const products = [
     price: 4.80,
     category: "cake",
     badge: "Seasonal",
-    image: "/cupcake.jpg"
+    image: "./cupcake.jpg"
   },
   {
     id: 6,
@@ -52,7 +52,7 @@ export const products = [
     price: 4.80,
     category: "cake",
     badge: "Seasonal",
-    image: "/cupcake.jpg"
+    image: "./cupcake.jpg"
   },
   {
     id: 7,
@@ -61,7 +61,7 @@ export const products = [
     price: 4.80,
     category: "cake",
     badge: "Seasonal",
-    image: "/cupcake.jpg"
+    image: "./cupcake.jpg"
   },
   {
     id: 8,
@@ -70,7 +70,7 @@ export const products = [
     price: 4.80,
     category: "cake",
     badge: "Seasonal",
-    image: "/cupcake.jpg"
+    image: "./sourdough.jpg"
   },
   {
     id: 9,
@@ -79,6 +79,33 @@ export const products = [
     price: 4.80,
     category: "cake",
     badge: "Seasonal",
-    image: "/cupcake.jpg"
+    image: "./crossaint.jpg"
+  },
+  {
+    id: 10,
+    name: "Cupcake",
+    description: "Zingy curd, buttery shortcrust, Italian meringue",
+    price: 4.80,
+    category: "cake",
+    badge: "Seasonal",
+    image: "./cupcake.jpg"
+  },
+  {
+    id: 11,
+    name: "Cupcake",
+    description: "Zingy curd, buttery shortcrust, Italian meringue",
+    price: 4.80,
+    category: "cake",
+    badge: "Seasonal",
+    image: "./cupcake.jpg"
+  },
+  {
+    id: 12,
+    name: "Cupcake",
+    description: "Zingy curd, buttery shortcrust, Italian meringue",
+    price: 4.80,
+    category: "cake",
+    badge: "Seasonal",
+    image: "./cupcake.jpg"
   },
 ]
