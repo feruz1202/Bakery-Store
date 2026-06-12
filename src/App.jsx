@@ -13,7 +13,44 @@ import About from "./pages/about.jsx"
 import Login from "./pages/login.jsx"
 
 export default function App() {
-  
+  // ADD at top of App function
+  const [featuredProducts, setFeaturedProducts] = useState([])
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/products")
+      .then(res => res.json())
+      .then(data => setFeaturedProducts(data.slice(0, 4)))
+  }, [])
+
+  // Then in home best sellers section replace:
+  // products.slice(0, 4).map(...)
+  // With:
+  // featuredProducts.map(...)
+
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+    if (token) {
+      fetch("http://localhost:5000/api/auth/me", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data._id) {
+            setUser({
+              name: data.firstName,
+              email: data.email,
+              role: data.role,
+              token
+            })
+          }
+        })
+        .catch(() => localStorage.removeItem("token"))
+    }
+  }, [])
+
+
   const [page, setPage] = useState("home")
   const [cart, setCart] = useState([])
   const [user, setUser] = useState(null)
@@ -129,7 +166,7 @@ export default function App() {
 
             {/* BESTSELLER CARDS */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 px-10 lg:pl-30 max-w-[1650px] mt-8 gap-5 flex-wrap ">
-              {products.slice(0, 4).map(product => (
+              {featuredProducts.map(product => (
                 <ProductCard
                   key={product.id}
                   product={product}

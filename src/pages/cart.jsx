@@ -16,6 +16,57 @@ export default function Cart({ cart, setCart, setPage }) {
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
   const delivery = subtotal >= 20 ? 0 : 2.95
   const total = subtotal + delivery
+  const handleCheckout = async () => {
+    if (!user) {
+      setPage("login")
+      return
+    }
+
+    try {
+      const token = localStorage.getItem("token")
+
+      const orderData = {
+        items: cart.map(item => ({
+          product: item._id,
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+          image: item.image
+        })),
+        totalPrice: total,
+        deliveryAddress: {
+          firstName: "Feruz",
+          lastName: "Ikromov",
+          address: "12 Baker Street",
+          city: "London",
+          postcode: "W1U 3BQ",
+          phone: "+44 7700 900000"
+        },
+        couponCode: appliedCoupon ? appliedCoupon.code : null,
+        discount: discount
+      }
+
+      const response = await fetch("http://localhost:5000/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(orderData)
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setCart([])
+        setPage("success")
+      } else {
+        alert(data.message)
+      }
+    } catch (err) {
+      alert("Something went wrong. Try again.")
+    }
+  }
 
   return (
     <div className="w-full bg-[#f2ede3] min-h-screen px-6 lg:px-20 py-10">

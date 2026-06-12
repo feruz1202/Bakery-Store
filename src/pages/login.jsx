@@ -9,18 +9,48 @@ export default function Login({ setPage, setUser }) {
   const [confirmPassword, setConfirmPassword] = useState("")
   const [agreed, setAgreed] = useState(false)
   const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
 
-  const handleSignIn = () => {
+  const handleSignIn = async () => {
     if (!email || !password) {
       setError("Please fill in all fields")
       return
     }
-    // Later: replace with real API call
-    setUser({ name: firstName || email.split("@")[0], email })
-    setPage("home")
+
+    try {
+      setLoading(true)
+      const response = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email, password })
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        // save token to localStorage
+        localStorage.setItem("token", data.token)
+        // save user to state
+        setUser({
+          name: data.firstName,
+          email: data.email,
+          role: data.role,
+          token: data.token
+        })
+        setPage("home")
+      } else {
+        setError(data.message)
+      }
+    } catch (err) {
+      setError("Something went wrong. Try again.")
+    } finally {
+      setLoading(false)
+    }
   }
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     if (!firstName || !lastName || !email || !password || !confirmPassword) {
       setError("Please fill in all fields")
       return
@@ -33,9 +63,36 @@ export default function Login({ setPage, setUser }) {
       setError("Please agree to the terms")
       return
     }
-    // Later: replace with real API call
-    setUser({ name: firstName, email })
-    setPage("home")
+
+    try {
+      setLoading(true)
+      const response = await fetch("http://localhost:5000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ firstName, lastName, email, password })
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        localStorage.setItem("token", data.token)
+        setUser({
+          name: data.firstName,
+          email: data.email,
+          role: data.role,
+          token: data.token
+        })
+        setPage("home")
+      } else {
+        setError(data.message)
+      }
+    } catch (err) {
+      setError("Something went wrong. Try again.")
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (

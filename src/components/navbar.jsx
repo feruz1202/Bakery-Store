@@ -51,7 +51,7 @@ export default function Navbar({ setPage, cartCount, user, setUser }) {
                   <p className="text-[12px] text-gray-400 px-3 py-1 truncate">{user.email}</p>
                   <hr className="my-1 border-gray-100" />
                   <button
-                    onClick={() => { setUser(null); setShowDropdown(false); setPage("home") }}
+                    onClick={() => { localStorage.removeItem("token"); setUser(null); setShowDropdown(false); setPage("home") }}
                     className="w-full text-left px-3 py-2 text-[13px] text-red-400 hover:bg-red-50 rounded-lg font-semibold"
                   >
                     Sign Out
