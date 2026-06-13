@@ -1,5 +1,5 @@
 export default function ProductCard({ product, addToCart, removeFromCart, cart }) {
-    const isInCart = cart.find(item => item.id === product.id)
+    const isInCart = cart.find(item => item._id === product._id)
     return (
         <>
             {/* FIRST CARD */}
@@ -8,25 +8,25 @@ export default function ProductCard({ product, addToCart, removeFromCart, cart }
                 <div className="relative h-[220px]">
                     {/* FULL IMAGE */}
                     <img
-                        src="/sourdough.jpg"
-                        alt="Classic Sourdough"
+                        src={product.image}
+                        alt={product.name}
                         className="w-full h-full object-cover"
                     />
                 </div>
                 {/* CONTENT AREA */}
                 <div className="flex flex-col p-4 gap-2">
                     <h3 className="font-bold text-[#1a1a1a] text-[16px]">
-                        Classic Sourdough
+                        {product.name}
                     </h3>
                     <p className="text-gray-500 text-[13px] leading-snug">
-                        Slow-fermented 48h, heritage wheat, perfect crust
+                        {product.description}
                     </p>
                     <div className="flex flex-row items-center justify-between mt-2">
-                        <span className="font-bold text-[#1a1a1a] text-[16px]">£6.50</span>
+                        <span className="font-bold text-[#1a1a1a] text-[16px]">£{product.price.toFixed(2)}</span>
                         {/* SHOW REMOVE BUTTON IF IN CART, ADD BUTTON IF NOT */}
                         {isInCart ? (
                             <button
-                                onClick={() => removeFromCart(product.id)}
+                                onClick={() => removeFromCart(product._id)}
                                 className="bg-red-500 text-white text-[13px] px-4 py-2 rounded-xl hover:bg-red-600"
                             >
                                 − Remove

@@ -1,6 +1,19 @@
 import { useState } from "react"
 
-export default function Cart({ cart, setCart, setPage }) {
+export default function Cart({ cart, setCart, setPage, user }) {
+  const [appliedCoupon, setAppliedCoupon] = useState(null)  // ← add this
+  const [couponInput, setCouponInput] = useState("")         // ← add this
+  const [couponError, setCouponError] = useState("")
+
+  // ADD THESE CALCULATIONS
+  const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
+  const discount = appliedCoupon
+    ? appliedCoupon.type === "percent"
+      ? (subtotal * appliedCoupon.discount) / 100
+      : appliedCoupon.discount
+    : 0
+  const delivery = subtotal >= 20 ? 0 : 2.95
+  const total = subtotal - discount + delivery
 
   const updateQty = (id, delta) => {
     setCart(prev => prev
@@ -13,18 +26,20 @@ export default function Cart({ cart, setCart, setPage }) {
     setCart(prev => prev.filter(item => item.id !== id))
   }
 
-  const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
-  const delivery = subtotal >= 20 ? 0 : 2.95
-  const total = subtotal + delivery
   const handleCheckout = async () => {
+    console.log("User:", user)           // ← add this
+    console.log("Cart:", cart)           // ← add this
+    console.log("Total:", total)
+
     if (!user) {
+      alert("Please login to checkout")
       setPage("login")
       return
     }
 
     try {
       const token = localStorage.getItem("token")
-
+      console.log("Token:", token)
       const orderData = {
         items: cart.map(item => ({
           product: item._id,
@@ -35,16 +50,17 @@ export default function Cart({ cart, setCart, setPage }) {
         })),
         totalPrice: total,
         deliveryAddress: {
-          firstName: "Feruz",
-          lastName: "Ikromov",
-          address: "12 Baker Street",
-          city: "London",
-          postcode: "W1U 3BQ",
-          phone: "+44 7700 900000"
+          firstName: user.name || "Customer",
+          lastName: "",
+          address: "To be filled",
+          city: "To be filled",
+          postcode: "To be filled",
+          phone: "To be filled"
         },
         couponCode: appliedCoupon ? appliedCoupon.code : null,
-        discount: discount
+        discount: discount || 0
       }
+      console.log("Order data:", orderData)
 
       const response = await fetch("http://localhost:5000/api/orders", {
         method: "POST",
@@ -54,8 +70,10 @@ export default function Cart({ cart, setCart, setPage }) {
         },
         body: JSON.stringify(orderData)
       })
+      console.log("Response status:", response.status)
 
       const data = await response.json()
+      console.log("Response data:", data)
 
       if (response.ok) {
         setCart([])
@@ -64,6 +82,7 @@ export default function Cart({ cart, setCart, setPage }) {
         alert(data.message)
       }
     } catch (err) {
+      console.log("Error:", err)
       alert("Something went wrong. Try again.")
     }
   }
@@ -186,7 +205,7 @@ export default function Cart({ cart, setCart, setPage }) {
             </div>
 
             <button
-              onClick={() => setPage("checkout")}
+              onClick={handleCheckout}
               className="w-full bg-[#c8973a] text-white py-3 rounded-xl font-bold text-[15px] hover:bg-[#b07d2a] transition"
             >
               Proceed to Checkout →

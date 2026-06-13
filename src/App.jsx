@@ -57,7 +57,7 @@ export default function App() {
   const addToCart = (product) => {
     setCart(prevCart => {
       // check if product already exists in cart
-      const exists = prevCart.find(item => item.id === product.id)
+      const exists = prevCart.find(item => item._id === product._id)
 
       if (exists) {
         // if yes, just increase quantity
@@ -79,7 +79,7 @@ export default function App() {
   }
 
   const removeFromCart = (productId) => {
-    setCart(prevCart => prevCart.filter(item => item.id !== productId))
+    setCart(prevCart => prevCart.filter(item => item._id !== productId))
   }
   return (
     <>
@@ -91,7 +91,7 @@ export default function App() {
       />
 
       {page === "shop" && <Shop addToCart={addToCart} removeFromCart={removeFromCart} cart={cart} />}
-      {page === "cart" && <Cart cart={cart} setCart={setCart} setPage={navigate} />}
+      {page === "cart" && <Cart cart={cart} setCart={setCart} setPage={navigate} user={user}/>}
       {page === "about" && <About setPage={navigate} />}
       {page === "login" && <Login setPage={navigate} setUser={setUser} />}
 

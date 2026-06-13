@@ -9,7 +9,7 @@ const products = [
     price: 6.50,
     category: "bread",
     badge: "Bestseller",
-    image: "/sourdough.jpg",
+    image: "./sourdough.jpg",
     inStock: true
   },
   {
@@ -18,26 +18,25 @@ const products = [
     price: 3.20,
     category: "pastry",
     badge: "Popular",
-    image: "/crossaint.jpg",
+    image: "./crossaint.jpg",
     inStock: true
   },
   {
     name: "Cupcake",
     description: "Zingy curd, buttery shortcrust, Italian meringue",
-    price: 4.80,
+    price: 5.80,
     category: "cake",
     badge: "Seasonal",
-    image: "/cupcake.jpg",
+    image: "./cupcake.jpg",
     inStock: true
   },
-   // ADD NEW PRODUCTS HERE
   {
     name: "Lemon Tart",
     description: "Zingy curd, buttery shortcrust, Italian meringue",
     price: 4.80,
     category: "cake",
     badge: "Seasonal",
-    image: "/lemontart.jpg",
+    image: "./cupcake.jpg",
     inStock: true
   },
   // add all your other products here same structure
