@@ -29,7 +29,10 @@ export default function Navbar({ setPage, cartCount, user, setUser }) {
           <span onClick={() => navigate("home")} className="font-[DM_Sans] cursor-pointer hover:text-[#c8973a] transition">Home</span>
           <span onClick={() => navigate("shop")} className="font-[DM_Sans] cursor-pointer hover:text-[#c8973a] transition">Shop</span>
           <span onClick={() => navigate("about")} className="font-[DM_Sans] cursor-pointer hover:text-[#c8973a] transition">About</span>
-          <span onClick={() => navigate("login")} className="font-[DM_Sans] cursor-pointer hover:text-[#c8973a] transition">Login</span>
+          {/* Only show Login when user is NOT logged in */}
+          {!user && (
+            <span onClick={() => setPage("login")} className="font-[DM_Sans] cursor-pointer hover:text-[#c8973a] transition">Login</span>
+          )}
         </div>
 
         {/* RIGHT SIDE */}
@@ -117,7 +120,6 @@ export default function Navbar({ setPage, cartCount, user, setUser }) {
             { label: "Home", page: "home" },
             { label: "Shop", page: "shop" },
             { label: "About", page: "about" },
-            { label: "Login", page: "login" },
           ].map(item => (
             <button
               key={item.page}
@@ -127,6 +129,12 @@ export default function Navbar({ setPage, cartCount, user, setUser }) {
               {item.label}
             </button>
           ))}
+          {/* Only show Login in sidebar when not logged in */}
+          {!user && (
+            <button onClick={() => navigate("login")} className="font-[DM_Sans] cursor-pointer hover:text-[#c8973a] transition">
+              Login
+            </button>
+          )}
         </div>
 
         {/* SIDEBAR FOOTER */}

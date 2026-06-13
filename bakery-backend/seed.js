@@ -31,12 +31,75 @@ const products = [
     inStock: true
   },
   {
-    name: "Lemon Tart",
+    name: "Berry Cake",
     description: "Zingy curd, buttery shortcrust, Italian meringue",
-    price: 4.80,
+    price: 12.80,
     category: "cake",
     badge: "Seasonal",
-    image: "./cupcake.jpg",
+    image: "./berry-cake.jpg",
+    inStock: true
+  },
+  {
+    name: "Bread",
+    description: "Zingy curd, buttery shortcrust, Italian meringue",
+    price: 2.50,
+    category: "bread",
+    badge: "Seasonal",
+    image: "./bread.jpg",
+    inStock: true
+  },
+  {
+    name: "Lime Mojito",
+    description: "Zingy curd, buttery shortcrust, Italian meringue",
+    price: 7.50,
+    category: "drink",
+    badge: "Seasonal",
+    image: "./lime-mojito.jpg",
+    inStock: true
+  },
+  {
+    name: "Pie",
+    description: "Zingy curd, buttery shortcrust, Italian meringue",
+    price: 9.99,
+    category: "cookie",
+    badge: "Seasonal",
+    image: "./pie.jpg",
+    inStock: true
+  },
+  {
+    name: "Pastries",
+    description: "Zingy curd, buttery shortcrust, Italian meringue",
+    price: 11.50,
+    category: "pastry",
+    badge: "Seasonal",
+    image: "./pishiriq.jpg",
+    inStock: true
+  },
+  {
+    name: "Round Bread",
+    description: "Zingy curd, buttery shortcrust, Italian meringue",
+    price: 3.80,
+    category: "bread",
+    badge: "Seasonal",
+    image: "./round-bread.jpg",
+    inStock: true
+  },
+  {
+    name: "Somsa",
+    description: "Zingy curd, buttery shortcrust, Italian meringue",
+    price: 4.30,
+    category: "pastry",
+    badge: "Seasonal",
+    image: "./somsa.jpg",
+    inStock: true
+  },
+  {
+    name: "Tropical Cocktail",
+    description: "Zingy curd, buttery shortcrust, Italian meringue",
+    price: 6.90,
+    category: "drink",
+    badge: "Seasonal",
+    image: "./tropical-cocktail.jpg",
     inStock: true
   },
   // add all your other products here same structure
