@@ -131,7 +131,7 @@ export default function Navbar({ setPage, cartCount, user, setUser }) {
           ))}
           {/* Only show Login in sidebar when not logged in */}
           {!user && (
-            <button onClick={() => navigate("login")} className="font-[DM_Sans] cursor-pointer hover:text-[#c8973a] transition">
+            <button onClick={() => navigate("login")} className="text-left px-4 py-3 rounded-xl font-[DM_Sans] font-semibold text-[#3b2314] hover:bg-[#f2ede3] hover:text-[#c8973a] transition text-[16px]">
               Login
             </button>
           )}
