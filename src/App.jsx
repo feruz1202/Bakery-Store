@@ -11,13 +11,14 @@ import { products } from "./data/productdata"
 import ProductCard from "./components/productcard"
 import About from "./pages/about.jsx"
 import Login from "./pages/login.jsx"
+import API_URL from "../config"
 
 export default function App() {
   // ADD at top of App function
   const [featuredProducts, setFeaturedProducts] = useState([])
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/products")
+    fetch(`${API_URL}/api/products`)
       .then(res => res.json())
       .then(data => setFeaturedProducts(data.slice(0, 4)))
   }, [])
@@ -30,7 +31,7 @@ export default function App() {
   useEffect(() => {
     const token = localStorage.getItem("token")
     if (token) {
-      fetch("http://localhost:5000/api/auth/me", {
+      fetch(`${API_URL}/api/auth/me`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -91,7 +92,7 @@ export default function App() {
       />
 
       {page === "shop" && <Shop addToCart={addToCart} removeFromCart={removeFromCart} cart={cart} />}
-      {page === "cart" && <Cart cart={cart} setCart={setCart} setPage={navigate} user={user}/>}
+      {page === "cart" && <Cart cart={cart} setCart={setCart} setPage={navigate} user={user} />}
       {page === "about" && <About setPage={navigate} />}
       {page === "login" && <Login setPage={navigate} setUser={setUser} />}
 

@@ -1,4 +1,5 @@
 import { useState } from "react"
+import API_URL from "../config"
 
 export default function Cart({ cart, setCart, setPage, user }) {
   const [appliedCoupon, setAppliedCoupon] = useState(null)  // ← add this
@@ -63,7 +64,7 @@ export default function Cart({ cart, setCart, setPage, user }) {
       }
       console.log("Order data:", orderData)
 
-      const response = await fetch("http://localhost:5000/api/orders", {
+      const response = await fetch(`${API_URL}/api/orders`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

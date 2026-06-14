@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import ProductCard from "../components/productcard"
+import API_URL from "../config"
 
 export default function Shop({ addToCart, removeFromCart, cart }) {
   const [activeCategory, setActiveCategory] = useState("all")
@@ -46,7 +47,7 @@ export default function Shop({ addToCart, removeFromCart, cart }) {
   }, [activeCategory, sortBy, maxPrice])
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/products")
+    fetch(`${API_URL}/api/products`)
       .then(res => res.json())
       .then(data => {
         console.log("Products from backend:", data)
