@@ -14,6 +14,7 @@ import Login from "./pages/login.jsx"
 import API_URL from "./config"
 
 export default function App() {
+  console.log("API URL:", import.meta.env.VITE_API_URL)
   // ADD at top of App function
   const [featuredProducts, setFeaturedProducts] = useState([])
 
