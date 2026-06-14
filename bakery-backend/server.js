@@ -7,7 +7,7 @@ const app = express()
 
 // Middleware
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5174", "http://192.168.1.9:5173", "https://bakery-backend-production-cc5e.up.railway.app", "https://https://bakery-store-k5lqjow11-feruz1202s-projects.vercel.app", "https://bakery-store.vercel.app", "https://https://bakery-store-six.vercel.app/"],
+  origin: ["http://localhost:5173", "http://localhost:5174", "http://192.168.1.9:5173", "https://bakery-backend-production-cc5e.up.railway.app", "https://bakery-store-k5lqjow11-feruz1202s-projects.vercel.app", "https://bakery-store.vercel.app", "https://bakery-store-six.vercel.app/"],
   credentials: true
 }))
 app.use(express.json())
