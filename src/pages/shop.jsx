@@ -3,6 +3,7 @@ import ProductCard from "../components/productcard"
 import API_URL from "../config"
 
 export default function Shop({ addToCart, removeFromCart, cart }) {
+  console.log("API URL being used:", API_URL)
   const [activeCategory, setActiveCategory] = useState("all")
   const [sortBy, setSortBy] = useState("default")
   const [maxPrice, setMaxPrice] = useState(50)
