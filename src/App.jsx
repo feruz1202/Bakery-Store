@@ -11,7 +11,7 @@ import { products } from "./data/productdata"
 import ProductCard from "./components/productcard"
 import About from "./pages/about.jsx"
 import Login from "./pages/login.jsx"
-import API_URL from "../config"
+import API_URL from "./config"
 
 export default function App() {
   // ADD at top of App function
