@@ -319,7 +319,7 @@ export default function Shop({ addToCart, removeFromCart, cart }) {
               </div>
 
               {/* PRODUCTS GRID */}
-              <div className="grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-3 gap-4 justify-items-center">
+              <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-4 justify-items-center">
                 {currentProducts.map(product => (
                   <ProductCard
                     key={product.id}
