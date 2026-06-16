@@ -3,7 +3,7 @@ export default function ProductCard({ product, addToCart, removeFromCart, cart }
     return (
         <>
             {/* FIRST CARD */}
-            <div className="flex flex-col max-w-[320px] rounded-2xl border border-gray-200 overflow-hidden bg-white">
+            <div className="flex flex-col w-full max-w-[280px] rounded-2xl border border-gray-200 overflow-hidden bg-white">
                 {/* IMAGE AREA */}
                 <div className="relative h-[220px]">
                     {/* FULL IMAGE */}
