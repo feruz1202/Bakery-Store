@@ -165,15 +165,12 @@ export default function Shop({ addToCart, removeFromCart, cart }) {
 
                 {/* IN STOCK */}
                 <div className="flex items-center gap-2">
-                  {product.inStock && product.stock > 0
-                    ? <span>In Stock</span>
-                    : <span>Out of Stock</span>
-                  }
+                  <span className={`w-2 h-2 rounded-full ${selectedProduct.inStock ? "bg-green-500" : "bg-red-400"}`}></span>
                   <span className="text-[13px] text-gray-500">
                     {selectedProduct.inStock ? "In Stock" : "Out of Stock"}
                   </span>
                 </div>
-
+                
                 {/* ADD TO CART BUTTON */}
                 <div className="mt-auto pt-4">
                   {cart && cart.find(item => item._id === selectedProduct._id) ? (
@@ -188,11 +185,13 @@ export default function Shop({ addToCart, removeFromCart, cart }) {
                     </button>
                   ) : (
                     <button
-                      onClick={() => addToCart(product)}
-                      disabled={!product.inStock || product.stock === 0}
-                      style={{ opacity: (!product.inStock || product.stock === 0) ? 0.5 : 1, cursor: (!product.inStock || product.stock === 0) ? "not-allowed" : "pointer" }}
+                      onClick={() => {
+                        addToCart(selectedProduct)
+                        setSelectedProduct(null)
+                      }}
+                      className="w-full bg-[#3b2314] text-white py-3 rounded-xl font-bold text-[15px] hover:bg-[#5a3520] transition"
                     >
-                      Add to Cart
+                      + Add to Cart
                     </button>
                   )}
                 </div>
