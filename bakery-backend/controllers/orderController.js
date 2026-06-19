@@ -1,4 +1,5 @@
 const Order = require("../models/Order")
+const Order = require("../models/Product")
 
 // POST create order
 const createOrder = async (req, res) => {
@@ -21,6 +22,14 @@ const createOrder = async (req, res) => {
       couponCode,
       discount
     })
+
+    // DECREASE STOCK FOR EACH PRODUCT
+    for (const item of items) {
+      await Product.findByIdAndUpdate(
+        item.product,
+        { $inc: { stock: -item.quantity } }  // decrease stock by quantity ordered
+      )
+    }
 
     res.status(201).json(order)
   } catch (err) {

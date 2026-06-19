@@ -272,4 +272,49 @@ router.delete("/staff/:id", adminAuth, async (req, res) => {
     }
 })
 
+router.get("/analytics", protect, adminOnly, async (req, res) => {
+    try {
+        const today = new Date()
+        today.setHours(0, 0, 0, 0)
+
+        const tomorrow = new Date(today)
+        tomorrow.setDate(tomorrow.getDate() + 1)
+
+        const totalOrders = await Order.countDocuments()
+        const totalCustomers = await User.countDocuments({ role: "customer" })
+        const totalSalesResult = await Order.aggregate([
+            { $group: { _id: null, total: { $sum: "$totalPrice" } } }
+        ])
+        const totalSales = totalSalesResult[0]?.total || 0
+
+        const todayOrders = await Order.countDocuments({
+            createdAt: { $gte: today, $lt: tomorrow }
+        })
+        const todayCustomers = await User.countDocuments({
+            role: "customer",
+            createdAt: { $gte: today, $lt: tomorrow }
+        })
+        const todaySalesResult = await Order.aggregate([
+            { $match: { createdAt: { $gte: today, $lt: tomorrow } } },
+            { $group: { _id: null, total: { $sum: "$totalPrice" } } }
+        ])
+        const todaySales = todaySalesResult[0]?.total || 0
+
+        res.json({
+            total: {
+                orders: totalOrders,
+                customers: totalCustomers,
+                sales: totalSales
+            },
+            today: {
+                orders: todayOrders,
+                customers: todayCustomers,
+                sales: todaySales
+            }
+        })
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+})
+
 module.exports = router
