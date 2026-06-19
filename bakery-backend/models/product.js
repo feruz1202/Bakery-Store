@@ -5,6 +5,10 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  ingredients: {
+    type: [String],
+    default: []
+  },
   description: {
     type: String,
     required: true
@@ -28,6 +32,10 @@ const productSchema = new mongoose.Schema({
     type: Boolean,
     default: true
   },
+  stock: {
+    type: Number,
+    default: 0
+  },
   dietary: {
     vegan: { type: Boolean, default: false },
     glutenFree: { type: Boolean, default: false },
@@ -35,4 +43,4 @@ const productSchema = new mongoose.Schema({
   }
 }, { timestamps: true })
 
-module.exports = mongoose.model("Product", productSchema)
+module.exports = mongoose.models.Product || mongoose.model("Product", productSchema)

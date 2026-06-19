@@ -6,12 +6,14 @@ import { AiFillFire } from "react-icons/ai";
 import { TbTruckDelivery } from "react-icons/tb";
 import Navbar from "./components/navbar.jsx";
 import Shop from "./pages/shop.jsx";
-import Cart from "./pages/cart.jsx"
-import { products } from "./data/productdata"
-import ProductCard from "./components/productcard"
-import About from "./pages/about.jsx"
-import Login from "./pages/login.jsx"
-import API_URL from "./config"
+import Cart from "./pages/cart.jsx";
+import { products } from "./data/productdata";
+import ProductCard from "./components/productcard";
+import About from "./pages/about.jsx";
+import Login from "./pages/login.jsx";
+import AdminDashboard from "./pages/AdminDashboard.jsx"
+import API_URL from "./config";
+
 
 export default function App() {
   console.log("API URL:", import.meta.env.VITE_API_URL)
@@ -96,6 +98,8 @@ export default function App() {
       {page === "cart" && <Cart cart={cart} setCart={setCart} setPage={navigate} user={user} />}
       {page === "about" && <About setPage={navigate} />}
       {page === "login" && <Login setPage={navigate} setUser={setUser} />}
+      {page === "admin" && <AdminDashboard />}
+
 
       {page === "home" && (
         <>
@@ -236,10 +240,18 @@ export default function App() {
             </div>
 
             <hr className="max-w-[1650px] border-top border-[1px] mx-30 mt-5 border-[#ffffff1a]" />
-            <p className="flex itemsc-center justify-center text-[#ffffff99] text-[14px] font-[DM_Sans] mt-3">&copy; 2026 Farine & Co. Bakery. All rights reserved.</p>
+            <p
+              className="flex itemsc-center justify-center text-[#ffffff99] text-[14px] font-[DM_Sans] mt-3"
+              onClick={() => {
+                sessionStorage.removeItem("fc_admin_token")
+                navigate("admin")
+              }}
+              style={{ cursor: "default" }}
+            >&copy; 2026 Farine & Co. Bakery. All rights reserved.</p>
           </div>
         </>
-      )}
+      )
+      }
     </>
   )
 }

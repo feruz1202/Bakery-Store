@@ -1,9 +1,9 @@
-export default function ProductCard({ product, addToCart, removeFromCart, cart }) {
+export default function ProductCard({ product, addToCart, removeFromCart, cart, onProductClick }) {
     const isInCart = cart.find(item => item._id === product._id)
     return (
         <>
             {/* FIRST CARD */}
-            <div className="flex flex-col w-full max-w-[280px] rounded-2xl border border-gray-200 overflow-hidden bg-white">
+            <div onClick={() => onProductClick(product)} className="flex flex-col w-full max-w-[280px] rounded-2xl border border-gray-200 overflow-hidden bg-white">
                 {/* IMAGE AREA */}
                 <div className="relative h-[220px]">
                     {/* FULL IMAGE */}
@@ -26,14 +26,21 @@ export default function ProductCard({ product, addToCart, removeFromCart, cart }
                         {/* SHOW REMOVE BUTTON IF IN CART, ADD BUTTON IF NOT */}
                         {isInCart ? (
                             <button
-                                onClick={() => removeFromCart(product._id)}
+                                onClick={(e) => {
+                                    e.stopPropagation()
+                                    removeFromCart(product._id)
+                                }}
+
                                 className="bg-red-500 text-white text-[13px] px-4 py-2 rounded-xl hover:bg-red-600"
                             >
                                 − Remove
                             </button>
                         ) : (
                             <button
-                                onClick={() => addToCart(product)}
+                                onClick={(e) => {
+                                    e.stopPropagation()
+                                    addToCart(product)
+                                }}
                                 className="bg-[#3b2314] text-white text-[13px] px-4 py-2 rounded-xl hover:bg-[#5a3520]"
                             >
                                 + Add

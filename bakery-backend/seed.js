@@ -10,7 +10,9 @@ const products = [
     category: "bread",
     badge: "Bestseller",
     image: "./sourdough.jpg",
-    inStock: true
+    inStock: true,
+    ingredients: ["Heritage wheat flour", "Water", "Salt", "Sourdough starter"],
+    stock: 46,
   },
   {
     name: "Butter Croissant",
@@ -19,7 +21,9 @@ const products = [
     category: "pastry",
     badge: "Popular",
     image: "./crossaint.jpg",
-    inStock: true
+    inStock: true,
+    ingredients: ["Heritage wheat flour", "Water", "Salt", "Sourdough starter"],
+    stock: 53,
   },
   {
     name: "Cupcake",
@@ -28,7 +32,9 @@ const products = [
     category: "cake",
     badge: "Seasonal",
     image: "./cupcake.jpg",
-    inStock: true
+    inStock: true,
+    ingredients: ["Heritage wheat flour", "Water", "Salt", "Sourdough starter"],
+    stock: 12,
   },
   {
     name: "Berry Cake",
@@ -37,7 +43,9 @@ const products = [
     category: "cake",
     badge: "Seasonal",
     image: "./berry-cake.jpg",
-    inStock: true
+    inStock: true,
+    ingredients: ["Heritage wheat flour", "Water", "Salt", "Sourdough starter"],
+    stock: 19,
   },
   {
     name: "Bread",
@@ -46,7 +54,9 @@ const products = [
     category: "bread",
     badge: "Seasonal",
     image: "./bread.jpg",
-    inStock: true
+    inStock: true,
+    ingredients: ["Heritage wheat flour", "Water", "Salt", "Sourdough starter"],
+    stock: 80,
   },
   {
     name: "Lime Mojito",
@@ -55,7 +65,9 @@ const products = [
     category: "drink",
     badge: "Seasonal",
     image: "./lime-mojito.jpg",
-    inStock: true
+    inStock: true,
+    ingredients: ["Heritage wheat flour", "Water", "Salt", "Sourdough starter"],
+    stock: 8,
   },
   {
     name: "Pie",
@@ -64,7 +76,9 @@ const products = [
     category: "cookie",
     badge: "Seasonal",
     image: "./pie.jpg",
-    inStock: true
+    inStock: true,
+    ingredients: ["Heritage wheat flour", "Water", "Salt", "Sourdough starter"],
+    stock: 20,
   },
   {
     name: "Pastries",
@@ -73,7 +87,9 @@ const products = [
     category: "pastry",
     badge: "Seasonal",
     image: "./pishiriq.jpg",
-    inStock: true
+    inStock: true,
+    ingredients: ["Heritage wheat flour", "Water", "Salt", "Sourdough starter"],
+    stock: 35,
   },
   {
     name: "Round Bread",
@@ -82,7 +98,9 @@ const products = [
     category: "bread",
     badge: "Seasonal",
     image: "./round-bread.jpg",
-    inStock: true
+    inStock: true,
+    ingredients: ["Heritage wheat flour", "Water", "Salt", "Sourdough starter"],
+    stock: 100,
   },
   {
     name: "Somsa",
@@ -91,7 +109,9 @@ const products = [
     category: "pastry",
     badge: "Seasonal",
     image: "./somsa.jpg",
-    inStock: true
+    inStock: true,
+    ingredients: ["Heritage wheat flour", "Water", "Salt", "Sourdough starter"],
+    stock: 24,
   },
   {
     name: "Tropical Cocktail",
@@ -100,7 +120,9 @@ const products = [
     category: "drink",
     badge: "Seasonal",
     image: "./tropical-cocktail.jpg",
-    inStock: true
+    inStock: false,
+    ingredients: ["Heritage wheat flour", "Water", "Salt", "Sourdough starter"],
+    stock: 0,
   },
   // add all your other products here same structure
 ]
