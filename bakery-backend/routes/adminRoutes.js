@@ -3,9 +3,9 @@
 const express = require("express")
 const router = express.Router()
 const jwt = require("jsonwebtoken")
-const Order = require("../models/order")
-const Product = require("../models/product")
-const User = require("../models/user")
+const Order = require("../models/Order")
+const Product = require("../models/Product")
+const User = require("../models/User")
 const adminAuth = require("../middleware/adminAuth")
 const Staff = require("../models/staff")
 

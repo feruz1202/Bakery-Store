@@ -146,7 +146,7 @@ function LoginScreen({ onLogin }) {
 
                 <form onSubmit={handleSubmit}>
                     <label style={{ fontSize: 11, color: C.muted, textTransform: "uppercase", letterSpacing: "0.07em", display: "block", marginBottom: 5 }}>Email</label>
-                    <input type="email" value={email} onChange={e => setEmail(e.target.value)} required style={inp} placeholder="admin@farineandco.com" />
+                    <input type="email" value={email} onChange={e => setEmail(e.target.value)} required style={inp} />
                     <label style={{ fontSize: 11, color: C.muted, textTransform: "uppercase", letterSpacing: "0.07em", display: "block", marginBottom: 5 }}>Password</label>
                     <input type="password" value={password} onChange={e => setPassword(e.target.value)} required style={inp} placeholder="••••••••" />
                     {error && <div style={{ fontSize: 12, color: C.danger, marginBottom: 10 }}>{error}</div>}
