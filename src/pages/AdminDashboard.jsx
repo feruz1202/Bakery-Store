@@ -44,17 +44,6 @@ const STATUS_COLORS = {
 const STATUSES = ["pending", "confirmed", "preparing", "delivered", "cancelled"];
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-const [analytics, setAnalytics] = useState(null)
-
-useEffect(() => {
-    const token = localStorage.getItem("token")
-    fetch(`${API_URL}/api/admin/analytics`, {
-        headers: { Authorization: `Bearer ${token}` }
-    })
-        .then(res => res.json())
-        .then(data => setAnalytics(data))
-}, [])
-
 function Badge({ status }) {
     const s = STATUS_COLORS[status] || { bg: C.blush, color: C.muted };
     return (
@@ -950,6 +939,7 @@ const NAV = [
 export default function AdminDashboard() {
     const [token, setToken] = useState(() => sessionStorage.getItem("fc_admin_token") || null);
     const [section, setSection] = useState("overview");
+    const [analytics, setAnalytics] = useState(null)
 
     const handleLogin = (t) => setToken(t);
     const handleLogout = () => {
@@ -961,43 +951,6 @@ export default function AdminDashboard() {
 
     return (
         <>
-            {analytics && (
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
-
-                    <div className="bg-white rounded-2xl border border-gray-200 p-6">
-                        <p className="text-[12px] font-bold uppercase tracking-widest text-gray-400 mb-1">Total Orders</p>
-                        <p className="font-[Playfair_Display] text-[36px] font-bold text-[#3b2314]">
-                            {analytics.total.orders}
-                        </p>
-                        <span className="bg-green-100 text-green-700 text-[11px] font-bold px-2 py-0.5 rounded-full mt-2 inline-block">
-                            +{analytics.today.orders} today
-                        </span>
-                    </div>
-
-                    <div className="bg-white rounded-2xl border border-gray-200 p-6">
-                        <p className="text-[12px] font-bold uppercase tracking-widest text-gray-400 mb-1">Total Customers</p>
-                        <p className="font-[Playfair_Display] text-[36px] font-bold text-[#3b2314]">
-                            {analytics.total.customers}
-                        </p>
-                        <span className="bg-green-100 text-green-700 text-[11px] font-bold px-2 py-0.5 rounded-full mt-2 inline-block">
-                            +{analytics.today.customers} today
-                        </span>
-                    </div>
-
-                    <div className="bg-white rounded-2xl border border-gray-200 p-6">
-                        <p className="text-[12px] font-bold uppercase tracking-widest text-gray-400 mb-1">Total Sales</p>
-                        <p className="font-[Playfair_Display] text-[36px] font-bold text-[#3b2314]">
-                            £{analytics.total.sales.toFixed(2)}
-                        </p>
-                        <span className="bg-green-100 text-green-700 text-[11px] font-bold px-2 py-0.5 rounded-full mt-2 inline-block">
-                            +£{analytics.today.sales.toFixed(2)} today
-                        </span>
-                    </div>
-
-                </div>
-            )}
-
-            
             <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
             <div style={{ display: "flex", minHeight: "100vh", background: C.cream }}>
 

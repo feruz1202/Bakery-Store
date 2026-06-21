@@ -15,6 +15,7 @@ app.use(cors({
 }))
 app.use(express.json({ limit: "10kb"}))
 app.use(helmet())
+app.use("/api/upload", require("./routes/upload"))
 
 // ── Rate limiting ─────────────────────────────────────────
 const globalLimiter = rateLimit({

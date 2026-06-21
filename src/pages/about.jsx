@@ -16,7 +16,7 @@ export default function About({ setPage }) {
 
                 {/* LEFT COLUMN - photo */}
                 <div className="w-full lg:w-[45%]">
-                    <img src="./about-photo.jpg" className="w-full h-[400px] object-cover rounded-2xl" />
+                    <img loading="lazy" src="./about-photo.jpg" className="w-full h-[400px] object-cover rounded-2xl" />
                 </div>
 
                 {/* RIGHT COLUMN - text */}
@@ -106,6 +106,7 @@ export default function About({ setPage }) {
                         {/* EMOJI AREA */}
                         <div className="h-[200px] overflow-hidden">
                             <img
+                                loading="lazy"
                                 src="./employee.jpg"
                                 alt="Marie Fontaine"
                                 className="w-full h-full object-cover object-top"
@@ -123,6 +124,7 @@ export default function About({ setPage }) {
                     <div className="border border-gray-200 rounded-2xl overflow-hidden bg-white">
                         <div className="h-[200px] overflow-hidden">
                             <img
+                                loading="lazy"
                                 src="./employee.jpg"
                                 alt="Marie Fontaine"
                                 className="w-full h-full object-cover object-top"
@@ -139,6 +141,7 @@ export default function About({ setPage }) {
                     <div className="border border-gray-200 rounded-2xl overflow-hidden bg-white">
                         <div className="h-[200px] overflow-hidden">
                             <img
+                                loading="lazy"
                                 src="./employee.jpg"
                                 alt="Marie Fontaine"
                                 className="w-full h-full object-cover object-top"

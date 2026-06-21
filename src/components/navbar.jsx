@@ -53,6 +53,19 @@ export default function Navbar({ setPage, cartCount, user, setUser }) {
                 <div className="absolute right-0 top-12 bg-white border border-gray-200 rounded-xl shadow-lg p-2 w-[180px] z-50">
                   <p className="text-[12px] text-gray-400 px-3 py-1 truncate">{user.email}</p>
                   <hr className="my-1 border-gray-100" />
+                  {/* ADMIN DASHBOARD BUTTON — only shows for admin */}
+                  {user.role === "admin" && (
+                    <button
+                      onClick={() => {
+                        setPage("admin")
+                        setShowDropdown(false)
+                      }}
+                      className="w-full text-left px-3 py-2 text-[13px] text-[#c8973a] hover:bg-[#f2ede3] rounded-lg font-semibold"
+                    >
+                      🛠️ Admin Dashboard
+                    </button>
+                  )}
+
                   <button
                     onClick={() => { localStorage.removeItem("token"); setUser(null); setShowDropdown(false); setPage("home") }}
                     className="w-full text-left px-3 py-2 text-[13px] text-red-400 hover:bg-red-50 rounded-lg font-semibold"

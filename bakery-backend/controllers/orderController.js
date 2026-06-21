@@ -1,5 +1,4 @@
 const Order = require("../models/Order")
-const Order = require("../models/Product")
 
 // POST create order
 const createOrder = async (req, res) => {

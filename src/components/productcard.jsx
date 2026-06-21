@@ -8,6 +8,7 @@ export default function ProductCard({ product, addToCart, removeFromCart, cart, 
                 <div className="relative h-[220px]">
                     {/* FULL IMAGE */}
                     <img
+                        loading="lazy"
                         src={product.image}
                         alt={product.name}
                         className="w-full h-full object-cover"

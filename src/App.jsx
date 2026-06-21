@@ -122,6 +122,7 @@ export default function App() {
               {/* RIGHT COLUMN */}
               <div className="w-[50%] h-[450px] px-10 lg:mr-45">
                 <img
+                loading="lazy"
                   className="hidden md:flex w-full h-full object-cover rounded-2xl"
                   src="/yeh-xintong-go3DT3PpIw4-unsplash.jpg"
                   alt="MAIN PAGE PHOTO"
@@ -241,12 +242,7 @@ export default function App() {
 
             <hr className="max-w-[1650px] border-top border-[1px] mx-30 mt-5 border-[#ffffff1a]" />
             <p
-              className="flex itemsc-center justify-center text-[#ffffff99] text-[14px] font-[DM_Sans] mt-3"
-              onClick={() => {
-                sessionStorage.removeItem("fc_admin_token")
-                navigate("admin")
-              }}
-              style={{ cursor: "default" }}
+              className="flex items-center justify-center text-[#ffffff99] text-[14px] font-[DM_Sans] mt-3"
             >&copy; 2026 Farine & Co. Bakery. All rights reserved.</p>
           </div>
         </>
