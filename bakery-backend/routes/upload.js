@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const { cloudinary, upload } = require("../config/cloudinary")
+const { cloudinary, upload } = require("../cloudConfig/cloudinary")
 const { protect, adminOnly } = require("../middleware/auth")
 
 // Upload single image
