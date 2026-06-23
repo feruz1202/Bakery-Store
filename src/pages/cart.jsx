@@ -14,8 +14,27 @@ export default function Cart({ cart, setCart, setPage, user }) {
       ? (subtotal * appliedCoupon.discount) / 100
       : appliedCoupon.discount
     : 0
-  const delivery = subtotal >= 20 ? 0 : 2.95
+  const delivery = subtotal >= 100000 ? 0 : 15000
   const total = subtotal - discount + delivery
+
+  const COUPONS = {
+    "WELCOME10": { discount: 10, type: "percent", label: "10% off" },
+    "SAVE50000": { discount: 50000, type: "fixed", label: "50,000 so'm off" },
+    "FRESH20": { discount: 20, type: "percent", label: "20% off" },
+    "BAKERY30": { discount: 30, type: "percent", label: "30% off" },
+  }
+
+  const applyCoupon = () => {
+    const code = couponInput.trim().toUpperCase()
+    const found = COUPONS[code]
+    if (found) {
+      setAppliedCoupon({ code, ...found })
+      setCouponError("")
+    } else {
+      setAppliedCoupon(null)
+      setCouponError("Invalid coupon code")
+    }
+  }
 
   const updateQty = (id, delta) => {
     setCart(prev => prev
@@ -138,7 +157,7 @@ export default function Cart({ cart, setCart, setPage, user }) {
                     <h3 className="font-bold text-[#3b2314] text-[16px]">{item.name}</h3>
                     <p className="text-gray-400 text-[13px]">{item.description}</p>
                     <p className="font-bold text-[#3b2314] text-[15px] mt-1">
-                      £{(item.price * item.quantity).toFixed(2)}
+                      {(item.price * item.quantity).toLocaleString()} so'm
                     </p>
 
                     {/* QTY CONTROLS */}
@@ -177,17 +196,25 @@ export default function Cart({ cart, setCart, setPage, user }) {
 
               <div className="flex justify-between text-[14px] text-gray-500 mb-3">
                 <span>Subtotal</span>
-                <span>£{subtotal.toFixed(2)}</span>
+                <span>{subtotal.toLocaleString()} so'm</span>
               </div>
+
+              {/* DISCOUNT ROW — only shows when coupon applied */}
+              {appliedCoupon && (
+                <div className="flex justify-between text-[14px] text-green-500 mb-3">
+                  <span>Discount ({appliedCoupon.label})</span>
+                  <span>− {discount.toLocaleString()} so'm</span>
+                </div>
+              )}
 
               <div className="flex justify-between text-[14px] text-gray-500 mb-1">
                 <span>Delivery</span>
-                <span>{delivery === 0 ? <span className="text-green-500 font-semibold">Free</span> : `£${delivery.toFixed(2)}`}</span>
+                <span>{delivery === 0 ? <span className="text-green-500 font-semibold">Free</span> : `${delivery.toLocaleString()} so'm`}</span>
               </div>
 
               {delivery > 0 && (
                 <p className="text-[12px] text-[#c8973a] mb-4">
-                  Spend £{(20 - subtotal).toFixed(2)} more for free delivery
+                  Spend {(100000 - subtotal).toLocaleString()} so'm more for free delivery
                 </p>
               )}
 
@@ -196,16 +223,40 @@ export default function Cart({ cart, setCart, setPage, user }) {
                 <input
                   type="text"
                   placeholder="Coupon code"
+                  value={couponInput}
+                  onChange={(e) => setCouponInput(e.target.value)}
                   className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-[13px] outline-none focus:border-[#c8973a]"
                 />
-                <button className="bg-[#c8973a] text-white px-4 py-2 rounded-lg text-[13px] font-semibold hover:bg-[#b07d2a]">
+                <button
+                  onClick={applyCoupon}
+                  className="bg-[#c8973a] text-white px-4 py-2 rounded-lg text-[13px] font-semibold hover:bg-[#b07d2a]"
+                >
                   Apply
                 </button>
               </div>
 
+              {/* ERROR */}
+              {couponError && (
+                <p className="text-red-400 text-[12px] mb-2">{couponError}</p>
+              )}
+
+              {/* SUCCESS */}
+              {appliedCoupon && (
+                <div className="flex justify-between items-center bg-green-50 border border-green-200 rounded-lg px-3 py-2 mb-3">
+                  <p className="text-green-600 text-[13px] font-semibold">
+                    ✓ {appliedCoupon.code} — {appliedCoupon.label} applied!
+                  </p>
+                  <button
+                    onClick={() => { setAppliedCoupon(null); setCouponInput("") }}
+                    className="text-gray-400 hover:text-red-400 text-[12px]"
+                  >
+                    Remove
+                  </button>
+                </div>
+              )}
               <div className="border-t border-gray-100 pt-4 flex justify-between font-bold text-[#3b2314] text-[16px] mb-5">
                 <span>Total</span>
-                <span>£{total.toFixed(2)}</span>
+                <span>{total.toLocaleString()} so'm</span>
               </div>
 
               <button

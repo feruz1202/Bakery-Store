@@ -12,20 +12,20 @@ cloudinary.config({
 const path = require("path")
 
 const imageMap = {
-  "/sourdough.jpg": path.join(__dirname, "../../Bakery Store/public/sourdough.jpg"),
-  "/crossaint.jpg": path.join(__dirname, "../../Bakery Store/public/crossaint.jpg"),
-  "/cupcake.jpg": path.join(__dirname, "../../Bakery Store/public/cupcake.jpg"),
-  "/tropical-cocktail.jpg": path.join(__dirname, "../../Bakery Store/public/tropical-cocktail.jpg"),
-  "/somsa.jpg": path.join(__dirname, "../../Bakery Store/public/somsa.jpg"),
-  "/round-bread.jpg": path.join(__dirname, "../../Bakery Store/public/round-bread.jpg"),
-  "/pishiriq.jpg": path.join(__dirname, "../../Bakery Store/public/pishiriq.jpg"),
-  "/pie.jpg": path.join(__dirname, "../../Bakery Store/public/pie.jpg"),
-  "/lime-mojito.jpg": path.join(__dirname, "../../Bakery Store/public/lime-mojito.jpg"),
-  "/employee.jpg": path.join(__dirname, "../../Bakery Store/public/employee.jpg"),
-  "/bread.jpg": path.join(__dirname, "../../Bakery Store/public/bread.jpg"),
-  "/berry-cake.jpg": path.join(__dirname, "../../Bakery Store/public/berry-cake.jpg"),
-  "/about-photo.jpg": path.join(__dirname, "../../Bakery Store/public/about-photo.jpg"),
-  "/yeh-xintong-go3DT3PpIw4-unsplash.jpg": path.join(__dirname, "../../Bakery Store/public/yeh-xintong-go3DT3PpIw4-unsplash.jpg"),
+    "./sourdough.jpg": path.join(__dirname, "../../Bakery Store/public/sourdough.jpg"),
+    "./crossaint.jpg": path.join(__dirname, "../../Bakery Store/public/crossaint.jpg"),
+    "./cupcake.jpg": path.join(__dirname, "../../Bakery Store/public/cupcake.jpg"),
+    "./tropical-cocktail.jpg": path.join(__dirname, "../../Bakery Store/public/tropical-cocktail.jpg"),
+    "./somsa.jpg": path.join(__dirname, "../../Bakery Store/public/somsa.jpg"),
+    "./round-bread.jpg": path.join(__dirname, "../../Bakery Store/public/round-bread.jpg"),
+    "./pishiriq.jpg": path.join(__dirname, "../../Bakery Store/public/pishiriq.jpg"),
+    "./pie.jpg": path.join(__dirname, "../../Bakery Store/public/pie.jpg"),
+    "./lime-mojito.jpg": path.join(__dirname, "../../Bakery Store/public/lime-mojito.jpg"),
+    "./employee.jpg": path.join(__dirname, "../../Bakery Store/public/employee.jpg"),
+    "./bread.jpg": path.join(__dirname, "../../Bakery Store/public/bread.jpg"),
+    "./berry-cake.jpg": path.join(__dirname, "../../Bakery Store/public/berry-cake.jpg"),
+    "./about-photo.jpg": path.join(__dirname, "../../Bakery Store/public/about-photo.jpg"),
+    "./yeh-xintong-go3DT3PpIw4-unsplash.jpg": path.join(__dirname, "../../Bakery Store/public/yeh-xintong-go3DT3PpIw4-unsplash.jpg"),
 }
 
 const fs = require("fs")
@@ -36,6 +36,10 @@ console.log("File exists:", fs.existsSync(testPath))
 mongoose.connect(process.env.MONGODB_URI)
     .then(async () => {
         console.log("MongoDB connected!")
+        // Add before the for loop
+        const allProducts = await Product.find({}, { name: 1, image: 1 })
+        console.log("Current product images:")
+        allProducts.forEach(p => console.log(p.name, "→", p.image))
 
         for (const [oldPath, localPath] of Object.entries(imageMap)) {
             try {
@@ -68,7 +72,7 @@ mongoose.connect(process.env.MONGODB_URI)
         console.log(err)
         process.exit(1)
     })
-    
+
 
 console.log("Cloud:", process.env.CLOUDINARY_CLOUD_NAME)
 console.log("Key:", process.env.CLOUDINARY_API_KEY)

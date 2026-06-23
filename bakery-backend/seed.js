@@ -6,7 +6,7 @@ const products = [
   {
     name: "Classic Sourdough",
     description: "Slow-fermented 48h, heritage wheat, perfect crust",
-    price: 6.50,
+    price: 10000,
     category: "bread",
     badge: "Bestseller",
     image: "./sourdough.jpg",
@@ -17,7 +17,7 @@ const products = [
   {
     name: "Butter Croissant",
     description: "French laminated dough, pure Irish butter, 72 layers",
-    price: 3.20,
+    price: 18000,
     category: "pastry",
     badge: "Popular",
     image: "./crossaint.jpg",
@@ -28,7 +28,7 @@ const products = [
   {
     name: "Cupcake",
     description: "Zingy curd, buttery shortcrust, Italian meringue",
-    price: 5.80,
+    price: 25000,
     category: "cake",
     badge: "Seasonal",
     image: "./cupcake.jpg",
@@ -39,7 +39,7 @@ const products = [
   {
     name: "Berry Cake",
     description: "Zingy curd, buttery shortcrust, Italian meringue",
-    price: 12.80,
+    price: 150000,
     category: "cake",
     badge: "Seasonal",
     image: "./berry-cake.jpg",
@@ -50,7 +50,7 @@ const products = [
   {
     name: "Bread",
     description: "Zingy curd, buttery shortcrust, Italian meringue",
-    price: 2.50,
+    price: 5000,
     category: "bread",
     badge: "Seasonal",
     image: "./bread.jpg",
@@ -61,7 +61,7 @@ const products = [
   {
     name: "Lime Mojito",
     description: "Zingy curd, buttery shortcrust, Italian meringue",
-    price: 7.50,
+    price: 35000,
     category: "drink",
     badge: "Seasonal",
     image: "./lime-mojito.jpg",
@@ -72,7 +72,7 @@ const products = [
   {
     name: "Pie",
     description: "Zingy curd, buttery shortcrust, Italian meringue",
-    price: 9.99,
+    price: 120000,
     category: "cookie",
     badge: "Seasonal",
     image: "./pie.jpg",
@@ -83,7 +83,7 @@ const products = [
   {
     name: "Pastries",
     description: "Zingy curd, buttery shortcrust, Italian meringue",
-    price: 11.50,
+    price: 55000,
     category: "pastry",
     badge: "Seasonal",
     image: "./pishiriq.jpg",
@@ -94,7 +94,7 @@ const products = [
   {
     name: "Round Bread",
     description: "Zingy curd, buttery shortcrust, Italian meringue",
-    price: 3.80,
+    price: 7000,
     category: "bread",
     badge: "Seasonal",
     image: "./round-bread.jpg",
@@ -105,7 +105,7 @@ const products = [
   {
     name: "Somsa",
     description: "Zingy curd, buttery shortcrust, Italian meringue",
-    price: 4.30,
+    price: 40000,
     category: "pastry",
     badge: "Seasonal",
     image: "./somsa.jpg",
@@ -116,7 +116,7 @@ const products = [
   {
     name: "Tropical Cocktail",
     description: "Zingy curd, buttery shortcrust, Italian meringue",
-    price: 6.90,
+    price: 35000,
     category: "drink",
     badge: "Seasonal",
     image: "./tropical-cocktail.jpg",

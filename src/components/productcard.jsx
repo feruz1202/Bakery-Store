@@ -23,7 +23,7 @@ export default function ProductCard({ product, addToCart, removeFromCart, cart, 
                         {product.description}
                     </p>
                     <div className="flex flex-row items-center justify-between mt-2">
-                        <span className="font-bold text-[#1a1a1a] text-[16px]">£{product.price.toFixed(2)}</span>
+                        <span className="font-bold text-[#1a1a1a] text-[16px]">{product.price.toLocaleString()} so'm</span>
                         {/* SHOW REMOVE BUTTON IF IN CART, ADD BUTTON IF NOT */}
                         {isInCart ? (
                             <button

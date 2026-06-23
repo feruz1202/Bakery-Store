@@ -30,7 +30,7 @@ const C = {
 };
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
-const fmt = (n) => `$${Number(n || 0).toFixed(2)}`;
+const fmt = (n) => `${Number(n || 0).toLocaleString()} so'm`;
 const initials = (name = "") => name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2);
 
 const STATUS_COLORS = {
@@ -354,7 +354,7 @@ function Overview({ token }) {
         <div>
             <SectionHead>Overview</SectionHead>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 14, marginBottom: 24 }}>
-                <StatCard label="Total revenue" value={`$${Math.round(stats.totalRevenue).toLocaleString()}`} accent={C.gold} />
+                <StatCard label="Total revenue" value={`${Math.round(stats.totalRevenue).toLocaleString()} so'm`} accent={C.gold} />
                 <StatCard label="Orders" value={stats.totalOrders} accent="#7A8C6E" />
                 <StatCard label="Products" value={stats.totalProducts} sub={`${stats.totalUnits} units · ${stats.outOfStock} out of stock`} accent="#4A6FA5" />
                 <StatCard label="Customers" value={stats.totalUsers} accent="#A8833F" />
@@ -366,7 +366,7 @@ function Overview({ token }) {
                     <div style={{ height: 200 }}>
                         <Bar
                             data={{ labels: MONTHS, datasets: [{ data: revenueByMonth, backgroundColor: "#C9A96E", borderRadius: 5, hoverBackgroundColor: "#A8833F" }] }}
-                            options={{ ...chartBase, scales: { x: xTick, y: { ...yTick, ticks: { ...yTick.ticks, callback: v => `$${v}` } } } }}
+                            options={{ ...chartBase, scales: { x: xTick, y: { ...yTick, ticks: { ...yTick.ticks, callback: v => `${v.toLocaleString()} so'm` } } } }}
                         />
                     </div>
                 </div>
@@ -644,7 +644,7 @@ function Customers({ token }) {
                 <StatCard label="Total customers" value={users.length} accent={C.gold} />
                 <StatCard label="Total orders" value={users.reduce((s, u) => s + u.orderCount, 0)} accent="#7A8C6E" />
                 <StatCard label="Avg order value" value={fmt(avgOrder)} accent="#4A6FA5" />
-                <StatCard label="Total revenue" value={`$${Math.round(totalSpent).toLocaleString()}`} accent="#A8833F" />
+                <StatCard label="Total revenue" value={`${Math.round(totalSpent).toLocaleString()} so'm`} accent="#A8833F" />
             </div>
 
             {loading ? <Spinner /> : (

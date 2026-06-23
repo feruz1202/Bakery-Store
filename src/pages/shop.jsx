@@ -15,7 +15,7 @@ export default function Shop({ addToCart, removeFromCart, cart }) {
   const [availability, setAvailability] = useState({ inStock: true, preOrder: false })
   // Change states to strings
   const [minPrice, setMinPrice] = useState("0")
-  const [maxPrice, setMaxPrice] = useState("50")
+  const [maxPrice, setMaxPrice] = useState("1000000")
   const [filterSuccess, setFilterSuccess] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState(null)
 
@@ -30,7 +30,7 @@ export default function Shop({ addToCart, removeFromCart, cart }) {
     })
 
   const handleReset = () => {
-    setMaxPrice(500)
+    setMaxPrice(1000000)
     setMinPrice(0)
     setSortBy("default")
     setActiveCategory("all")
@@ -47,6 +47,8 @@ export default function Shop({ addToCart, removeFromCart, cart }) {
   const startIndex = (currentPage - 1) * productsPerPage
   const endIndex = startIndex + productsPerPage
   const currentProducts = filtered.slice(startIndex, endIndex)
+  console.log("Filtered:", filtered)
+  console.log("CurrentProducts:", currentProducts)
 
   useEffect(() => {
     setCurrentPage(1)
@@ -128,7 +130,7 @@ export default function Shop({ addToCart, removeFromCart, cart }) {
 
                 {/* PRICE */}
                 <p className="text-[22px] font-bold text-[#c8973a]">
-                  £{selectedProduct.price.toFixed(2)}
+                  {selectedProduct.price.toLocaleString()} so'm
                 </p>
 
                 {/* DESCRIPTION */}
@@ -170,7 +172,7 @@ export default function Shop({ addToCart, removeFromCart, cart }) {
                     {selectedProduct.inStock ? "In Stock" : "Out of Stock"}
                   </span>
                 </div>
-                
+
                 {/* ADD TO CART BUTTON */}
                 <div className="mt-auto pt-4">
                   {cart && cart.find(item => item._id === selectedProduct._id) ? (
@@ -302,14 +304,14 @@ export default function Shop({ addToCart, removeFromCart, cart }) {
                     <input
                       type="range"
                       min="0"
-                      max="500"
+                      max="1000000"
                       value={maxPrice}
                       onChange={(e) => setMaxPrice(e.target.value)}
                       className="w-full accent-[#c8973a]"
                     />
                     <div className="flex justify-between text-[12px] text-gray-400 mt-1">
-                      <span>£1</span>
-                      <span>£{maxPrice}</span>
+                      <span>10000</span>
+                      <span>{Number(maxPrice).toLocaleString()} so'm</span>
                     </div>
                   </div>
 
@@ -419,14 +421,14 @@ export default function Shop({ addToCart, removeFromCart, cart }) {
                 <input
                   type="range"
                   min="0"
-                  max="500"
+                  max="1000000"
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(e.target.value)}
                   className="w-full accent-[#c8973a]"
                 />
                 <div className="flex justify-between text-[12px] text-gray-400 mt-1">
-                  <span>£{minPrice}</span>
-                  <span>£{maxPrice}</span>
+                  <span>{minPrice} so'm</span>
+                  <span>{maxPrice} so'm</span>
                 </div>
               </div>
 
