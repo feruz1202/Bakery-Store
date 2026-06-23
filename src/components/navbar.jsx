@@ -33,6 +33,11 @@ export default function Navbar({ setPage, cartCount, user, setUser }) {
           {!user && (
             <span onClick={() => setPage("login")} className="font-[DM_Sans] cursor-pointer hover:text-[#c8973a] transition">Login</span>
           )}
+          {user && (
+            <span onClick={() => setPage("orders")} className="font-[DM_Sans] cursor-pointer hover:text-[#c8973a] transition">
+              My Orders
+            </span>
+          )}
         </div>
 
         {/* RIGHT SIDE */}
@@ -146,6 +151,14 @@ export default function Navbar({ setPage, cartCount, user, setUser }) {
           {!user && (
             <button onClick={() => navigate("login")} className="text-left px-4 py-3 rounded-xl font-[DM_Sans] font-semibold text-[#3b2314] hover:bg-[#f2ede3] hover:text-[#c8973a] transition text-[16px]">
               Login
+            </button>
+          )}
+          {user && (
+            <button
+              onClick={() => navigate("orders")}
+              className="text-left px-4 py-3 rounded-xl font-[DM_Sans] font-semibold text-[#3b2314] hover:bg-[#f2ede3] hover:text-[#c8973a] transition text-[16px]"
+            >
+              My Orders
             </button>
           )}
         </div>

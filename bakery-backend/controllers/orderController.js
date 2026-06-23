@@ -1,4 +1,5 @@
 const Order = require("../models/Order")
+const Product = require("../models/product")
 
 // POST create order
 const createOrder = async (req, res) => {
@@ -32,6 +33,7 @@ const createOrder = async (req, res) => {
 
     res.status(201).json(order)
   } catch (err) {
+     console.log("Order creation error:", err)
     res.status(500).json({ message: err.message })
   }
 }

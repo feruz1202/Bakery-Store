@@ -11,7 +11,7 @@ const compression = require("compression")
 
 // Middleware
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5174", "http://192.168.1.9:5173", "https://bakery-backend-2yej.onrender.com", "https://bakery-store-89wys6dxe-feruz1202s-projects.vercel.app", "https://bakery-store.vercel.app", "https://bakery-store-six.vercel.app"],
+  origin: ["http://localhost:5173", "http://localhost:5174", "http://192.168.1.9:5173", "https://bakery-backend-2yej.onrender.com", "https://bakery-store-nhalmpd7r-feruz1202s-projects.vercel.app", "https://bakery-store.vercel.app", "https://bakery-store-six.vercel.app"],
   credentials: true
 }))
 app.use(express.json({ limit: "10kb"}))

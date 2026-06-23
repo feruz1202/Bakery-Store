@@ -48,10 +48,6 @@ export default function Cart({ cart, setCart, setPage, user }) {
   }
 
   const handleCheckout = async () => {
-    console.log("User:", user)           // ← add this
-    console.log("Cart:", cart)           // ← add this
-    console.log("Total:", total)
-
     if (!user) {
       alert("Please login to checkout")
       setPage("login")
@@ -61,6 +57,7 @@ export default function Cart({ cart, setCart, setPage, user }) {
     try {
       const token = localStorage.getItem("token")
       console.log("Token:", token)
+      console.log("User:", user)
       const orderData = {
         items: cart.map(item => ({
           product: item._id,
@@ -81,7 +78,6 @@ export default function Cart({ cart, setCart, setPage, user }) {
         couponCode: appliedCoupon ? appliedCoupon.code : null,
         discount: discount || 0
       }
-      console.log("Order data:", orderData)
 
       const response = await fetch(`${API_URL}/api/orders`, {
         method: "POST",
@@ -91,10 +87,8 @@ export default function Cart({ cart, setCart, setPage, user }) {
         },
         body: JSON.stringify(orderData)
       })
-      console.log("Response status:", response.status)
 
       const data = await response.json()
-      console.log("Response data:", data)
 
       if (response.ok) {
         setCart([])

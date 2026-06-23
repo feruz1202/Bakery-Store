@@ -13,6 +13,8 @@ import About from "./pages/about.jsx";
 import Login from "./pages/login.jsx";
 import AdminDashboard from "./pages/AdminDashboard.jsx"
 import API_URL from "./config";
+import Orders from "./pages/myOrders.jsx";
+
 
 
 export default function App() {
@@ -99,6 +101,7 @@ export default function App() {
       {page === "about" && <About setPage={navigate} />}
       {page === "login" && <Login setPage={navigate} setUser={setUser} />}
       {page === "admin" && <AdminDashboard />}
+      {page === "orders" && <Orders user={user} setPage={setPage} />}
 
 
       {page === "home" && (

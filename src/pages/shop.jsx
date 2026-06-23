@@ -296,6 +296,33 @@ export default function Shop({ addToCart, removeFromCart, cart }) {
                     ))}
                   </div>
 
+                  {/* MIN MAX INPUTS */}
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="flex-1">
+                    <label className="text-[11px] text-gray-400 mb-1 block">Min</label>
+                    <input
+                      type="number"
+                      min="0"
+                      value={minPrice}
+                      onChange={(e) => setMinPrice(e.target.value)}
+                      className="w-full border border-gray-200 rounded-lg px-3 py-2 text-[13px] text-[#3b2314] outline-none focus:border-[#c8973a]"
+                      placeholder="0"
+                    />
+                  </div>
+                  <span className="text-gray-400 mt-4">—</span>
+                  <div className="flex-1">
+                    <label className="text-[11px] text-gray-400 mb-1 block">Max</label>
+                    <input
+                      type="number"
+                      min="0"
+                      value={maxPrice}
+                      onChange={(e) => setMaxPrice(e.target.value)}
+                      className="w-full border border-gray-200 rounded-lg px-3 py-2 text-[13px] text-[#3b2314] outline-none focus:border-[#c8973a]"
+                      placeholder="50"
+                    />
+                  </div>
+                </div>
+
                   <div className="border-t border-gray-100 mb-5" />
 
                   {/* PRICE RANGE */}
